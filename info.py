@@ -1,5 +1,3 @@
-# QuartzzDev
-
 import subprocess
 import sys
 import cpuinfo
@@ -9,9 +7,8 @@ import psutil
 cevap = int(input("""Detaylı Sonuç İçin [1] \nDaha Basit Sonuçlar İçin [2] """))
 
 if (cevap == 1):
-    msinfo_output = subprocess.check_output('msinfo32.exe /report msinfo_output.txt', shell=True)
+    msinfo_output = subprocess.check_output('msinfo32.exe /report pcOutput.txt', shell=True)
     pc_info_output = subprocess.check_output('wmic computersystem get /format:list', shell=True)
-    task_manager_output = subprocess.check_output('tasklist /v /fo csv', shell=True)
 
     with open('bilgisayar_bilgileri.txt', 'w') as f:
         f.write("MSInfo32 Bilgileri:\n\n")
@@ -20,10 +17,7 @@ if (cevap == 1):
         f.write("\n\nPC Özellikleri:\n\n")
         f.write(pc_info_output.decode('utf-8'))
 
-        f.write("\n\nGörev Yöneticisi Bilgileri:\n\n")
-        f.write(task_manager_output.decode('utf-8'))
-
-    print("bilgisayar_bilgileri.txt -- msinfo_output.txt --> Dosyalarına Bakınız . .")
+    print("bilgisayar_bilgileri.txt -- pcOutput.txt --> Dosyalarına Bakınız . .")
 elif (cevap == 2):
     print("basitbilgi.txt Dosyası Oluşturuldu")
     def get_cpu_info():
@@ -111,3 +105,6 @@ elif (cevap == 2):
 
     if __name__ == '__main__':
         main()
+
+
+
